@@ -53,7 +53,6 @@ session = Session()
 # add_test_data()
 
 
-
 def Shop_():
 
     publisher = (input('Введите идендификатор целевого издателя: '))
@@ -74,9 +73,9 @@ def Shop_():
                 ).filter(Book.id_publisher == int(publisher_id[0]))
 
                 for c in q:
-                    print(c)
-            else:
-                print('Такого человека нет')
+                    print(c[0])
+        else:
+            print('Такого человека нет')
     else:
 
         q = session.query(Shop.name).filter(
@@ -85,8 +84,8 @@ def Shop_():
             Stock.id_shop == Shop.id
         ).filter(Book.id_publisher == publisher)
 
-        for c in q:
-            print(c)
+        for name in q:
+            print(name[0])
 
 
 Shop_()
